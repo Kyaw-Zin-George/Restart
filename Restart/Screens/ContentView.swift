@@ -7,7 +7,11 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct ContentView: View{
+    
+    @AppStorage("onboarding") var isOnBoardingViewActive: Bool = true
+    
+    
     var body: some View {
         VStack {
             Image(systemName: "globe")
