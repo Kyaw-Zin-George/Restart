@@ -8,8 +8,24 @@
 import SwiftUI
 
 struct OnBoardingView: View {
+    //MARK: - PROPERTY
+    //this value will only be added to the property when the program does not find the ONBOARDING key previously set in the device's permanent storage
+    //this value will be ignored when the running program finds a previously creating ONBOARDING key
+    @AppStorage("onboarding") var isOnBoardingViewActive: Bool = true
+    
+    //MARK: - BODY
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack (spacing: 20){
+            Text("Onboarding")
+                .font(.largeTitle)
+            
+            Button(action: {
+                //Action
+                isOnBoardingViewActive = false
+            }) {
+                Text("Start")
+            }
+        }// : VSTACK
     }
 }
 
