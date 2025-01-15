@@ -56,6 +56,29 @@ struct OnBoardingView: View {
                 }// : CENTER
                 Spacer()
                 //MARK: - FOOTER
+                ZStack{
+                    //PARTS OF CUSTOM BUTTON
+                    
+                    //1.BACKGROUND (STATIC)
+                    Capsule()
+                        .fill(Color.white.opacity(0.2))
+                    
+                    Capsule()
+                        .fill(Color.white.opacity(0.2))
+                        .padding(8)
+                        
+                    //2.CALL-TO-ACTION (STATIC)
+                    Text("Get Started")
+                        .font(.system(.title3, design: .rounded))
+                        .fontWeight(.bold)
+                        .foregroundStyle(.white)
+                        .offset(x:20)
+                    //3. CAPSULE (DYNAMIC)
+                   
+                    //4: CIRCLE (DRAGGABLE)
+                }//: Footer
+                .frame(height: 80,alignment: .center)
+                .padding()
                 
             }// : VSTACK
         }// : ZSTACK
