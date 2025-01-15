@@ -15,17 +15,35 @@ struct OnBoardingView: View {
     
     //MARK: - BODY
     var body: some View {
-        VStack (spacing: 20){
-            Text("Onboarding")
-                .font(.largeTitle)
-            
-            Button(action: {
-                //Action
-                isOnBoardingViewActive = false
-            }) {
-                Text("Start")
-            }
-        }// : VSTACK
+        ZStack {
+            Color("ColorBlue")
+                .ignoresSafeArea()
+            VStack (spacing: 20){
+               //MARK: - HEADER
+                Spacer()
+                
+                VStack(spacing: 0) {
+                    Text("Share")
+                        .font(.system(size: 60))
+                        .fontWeight(.heavy)
+                        .foregroundStyle(.white)
+                    
+                    Text("""
+                    It's not how much we give but
+                    how much love we put into giving
+                    """)
+                    .font(.title3)
+                    .fontWeight(.light)
+                    .foregroundStyle(.white)
+                    .multilineTextAlignment(.center)
+                    .padding(.horizontal, 10)
+                }
+                //MARK: - CENTER
+               
+                //MARK: - FOOTER
+                
+            }// : VSTACK
+        }// : ZSTACK
     }
 }
 
