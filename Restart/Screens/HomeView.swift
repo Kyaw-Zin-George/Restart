@@ -22,7 +22,12 @@ struct HomeView: View {
                 .scaledToFit()
                 .padding()
             //MARK: - CENTER
-            
+            Text("The time that leads to matery id dependent on the intensity of our focus.")
+                .font(.title3)
+                .fontWeight(.light)
+                .foregroundStyle(.secondary)
+                .padding()
+                .multilineTextAlignment(.center)
            
             
             //MARK: - FOOTER
