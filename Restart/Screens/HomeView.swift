@@ -17,10 +17,13 @@ struct HomeView: View {
           //MARK: - HEADER
             Spacer()
             
-            Image("character-2")
-                .resizable()
-                .scaledToFit()
-                .padding()
+            ZStack {
+                CircleGroupView(shapeColor: .gray, shapeOpacity: 0.3)
+                Image("character-2")
+                    .resizable()
+                    .scaledToFit()
+                    .padding()
+            }
             //MARK: - CENTER
             Text("The time that leads to matery id dependent on the intensity of our focus.")
                 .font(.title3)
