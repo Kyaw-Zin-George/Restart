@@ -13,6 +13,9 @@ struct OnBoardingView: View {
     //this value will be ignored when the running program finds a previously creating ONBOARDING key
     @AppStorage("onboarding") var isOnBoardingViewActive: Bool = true
     
+    @State private var buttonWidth : Double = UIScreen.main.bounds.width - 80
+    @State private var buttonOffset : CGFloat = 0
+    
     //MARK: - BODY
     var body: some View {
         ZStack {
@@ -84,13 +87,20 @@ struct OnBoardingView: View {
                         }
                         .foregroundStyle(.white)
                         .frame(width: 80, height: 80,alignment: .center)
-                        .onTapGesture {
-                            isOnBoardingViewActive = false
-                        }
+                        .offset(x:buttonOffset)
+                        .gesture(DragGesture()
+                            .onChanged{
+                                gesture in
+                                //only run when the dragging has been started in the right direction
+                                if gesture.translation.width > 0 {
+                                    buttonOffset = gesture.translation.width
+                                }
+                            }
+                        )//Gesture
                         Spacer()
                     }
                 }//: Footer
-                .frame(height: 80,alignment: .center)
+                .frame(width: buttonWidth ,height: 80,alignment: .center)
                 .padding()
                 
             }// : VSTACK
