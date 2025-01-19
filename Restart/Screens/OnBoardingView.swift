@@ -71,7 +71,7 @@ struct OnBoardingView: View {
                     HStack{
                         Capsule()
                             .fill(Color("ColorRed"))
-                            .frame(width: 80)
+                            .frame(width: buttonOffset + 80)
                         Spacer()
                     }
                     //4. CIRCLE (DRAGGABLE)
@@ -92,8 +92,16 @@ struct OnBoardingView: View {
                             .onChanged{
                                 gesture in
                                 //only run when the dragging has been started in the right direction
-                                if gesture.translation.width > 0 {
+                                if gesture.translation.width > 0  && buttonOffset <= buttonWidth - 80 {
                                     buttonOffset = gesture.translation.width
+                                }
+                            }
+                            .onEnded{ _ in
+                                if buttonOffset > buttonWidth / 2 {
+                                    buttonOffset = buttonWidth - 80
+                                    isOnBoardingViewActive = false
+                                } else{
+                                    buttonOffset = 0
                                 }
                             }
                         )//Gesture
