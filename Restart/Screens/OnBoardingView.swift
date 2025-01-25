@@ -15,6 +15,8 @@ struct OnBoardingView: View {
     
     @State private var buttonWidth : Double = UIScreen.main.bounds.width - 80
     @State private var buttonOffset : CGFloat = 0
+    //property to control the animation
+    @State private var isAnimating : Bool = false
     
     //MARK: - BODY
     var body: some View {
@@ -113,6 +115,9 @@ struct OnBoardingView: View {
                 
             }// : VSTACK
         }// : ZSTACK
+        .onAppear(perform: {
+            isAnimating = true
+        })
     }
 }
 
