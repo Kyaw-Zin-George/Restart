@@ -117,6 +117,9 @@ struct OnBoardingView: View {
                 }//: Footer
                 .frame(width: buttonWidth ,height: 80,alignment: .center)
                 .padding()
+                .opacity(isAnimating ? 1 : 0)
+                .offset(y: isAnimating ? 0 : 40)
+                .animation(.easeIn(duration: 1), value: isAnimating)
                 
             }// : VSTACK
         }// : ZSTACK
