@@ -43,6 +43,9 @@ struct OnBoardingView: View {
                     .multilineTextAlignment(.center)
                     .padding(.horizontal, 10)
                 }
+                .opacity(isAnimating ? 1 : 0)
+                .offset(y: isAnimating ? 0 : -40)
+                .animation(.easeOut(duration: 1),value: isAnimating)
                 //MARK: - CENTER
                 ZStack{
                     CircleGroupView(shapeColor: .white, shapeOpacity: 0.2)
