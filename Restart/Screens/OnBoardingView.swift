@@ -53,6 +53,8 @@ struct OnBoardingView: View {
                         .resizable()
                         .scaledToFit()
                 }// : CENTER
+                .opacity(isAnimating ? 1 : 0)
+                .animation(.easeOut(duration: 1), value: isAnimating)
                 Spacer()
                 //MARK: - FOOTER
                 ZStack{
