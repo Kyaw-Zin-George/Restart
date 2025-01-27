@@ -10,6 +10,7 @@ import SwiftUI
 struct HomeView: View {
     //MARK: PROPERTY
     @AppStorage("onboarding") var isOnboardingViewActive : Bool = false
+    @State private var isAnimating : Bool = false
     //MARK: BODY
     
     var body: some View {
@@ -23,6 +24,13 @@ struct HomeView: View {
                     .resizable()
                     .scaledToFit()
                     .padding()
+                    .offset(y: isAnimating ? 35 : -35)
+                    .animation (
+                        Animation
+                        .easeInOut(duration: 1)
+                        .repeatForever()
+                        ,value: isAnimating
+                    )
             }
             //MARK: - CENTER
             Text("The time that leads to matery id dependent on the intensity of our focus.")
@@ -49,6 +57,12 @@ struct HomeView: View {
             .buttonBorderShape(.capsule)
             .controlSize(.large)
         }//: VSTACK
+        .onAppear (perform: {
+            //Object managing the execution of tasks serially or concurrently on the app's main thread or on background thread
+            DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                isAnimating = true
+            }
+        })
     }
 }
 
