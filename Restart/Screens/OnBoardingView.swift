@@ -17,6 +17,7 @@ struct OnBoardingView: View {
     @State private var buttonOffset : CGFloat = 0
     //property to control the animation
     @State private var isAnimating : Bool = false
+    @State private var imageOffset : CGSize = .zero
     
     //MARK: - BODY
     var body: some View {
@@ -52,9 +53,20 @@ struct OnBoardingView: View {
                     Image("character-1")
                         .resizable()
                         .scaledToFit()
+                        .opacity(isAnimating ? 1 : 0)
+                        .animation(.easeOut(duration: 1), value: isAnimating)
+                        .offset(x:imageOffset.width * 1.2, y: 0)
+                        .gesture(
+                            DragGesture()
+                                .onChanged{
+                                    gesture in
+                                    if abs(imageOffset.width) <= 150{
+                                        imageOffset = gesture.translation
+                                    }
+                                          }
+                        )//: Gesture
                 }// : CENTER
-                .opacity(isAnimating ? 1 : 0)
-                .animation(.easeOut(duration: 1), value: isAnimating)
+                
                 Spacer()
                 //MARK: - FOOTER
                 ZStack{

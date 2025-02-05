@@ -27,7 +27,7 @@ struct HomeView: View {
                     .offset(y: isAnimating ? 35 : -35)
                     .animation (
                         Animation
-                        .easeInOut(duration: 1)
+                        .easeInOut(duration: 4)
                         .repeatForever()
                         ,value: isAnimating
                     )
